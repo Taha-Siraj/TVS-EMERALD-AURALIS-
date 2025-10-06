@@ -34,6 +34,11 @@ const popup = document.getElementById("popup");
 const openBtns = document.querySelectorAll(".open-popup");
 const closeBtn = document.querySelector(".close");
 
+
+setTimeout(() => {
+   popup.style.display = "flex";
+}, 5000);
+
 openBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     popup.style.display = "flex";
@@ -64,7 +69,7 @@ document.querySelectorAll("form.lead-form").forEach((form) => {
       return;
     }
 
-    const whatsappNumber = "919876543210"; 
+    const whatsappNumber = "9632870766"; 
 
     const message = `📋 *New Lead Captured!*\n\n👤 Name: ${name}\n📞 Phone: ${fullPhone}\n\nLanding Page: TVS Emerald Auralis`;
 
@@ -75,5 +80,15 @@ document.querySelectorAll("form.lead-form").forEach((form) => {
 
     form.reset();
     alert("Thank you! Our team will contact you shortly.");
+  });
+});
+
+
+document.querySelectorAll("form.lead-form input").forEach((input) => {
+  const savedValue = localStorage.getItem(input.name);
+  if (savedValue) input.value = savedValue;
+
+  input.addEventListener("input", () => {
+    localStorage.setItem(input.name, input.value);
   });
 });
